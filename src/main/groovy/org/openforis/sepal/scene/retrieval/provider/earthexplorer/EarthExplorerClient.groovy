@@ -78,7 +78,7 @@ class RestfulEarthExplorerClient implements EarthExplorerClient {
         def authToken
         String qs = "jsonRequest=" + this.urlEncode("{\"username\":\"$loginUsername\",\"password\":\"$loginPassword\"}")
         try {
-            def response = restClient.get(
+            def response = restClient.post(
                     path: 'login',
                     requestContentType: JSON,
                     queryString: qs
@@ -127,7 +127,7 @@ class RestfulEarthExplorerClient implements EarthExplorerClient {
 
     def logout(String token) {
         String qs = "jsonRequest=" + this.urlEncode("{\"apiKey\":\"$token\"}")
-        def response = restClient.get(
+        def response = restClient.post(
                 path: "logout",
                 requestContentType: JSON,
                 queryString: qs
