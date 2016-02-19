@@ -124,19 +124,19 @@
     </dependencies>
 
     <build>
-        <!-- Include frontend dist directory, in addition to standard resource
-            directory -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>frontend</directory>
-                <includes>
-                    <include>dist/**</include>
-                </includes>
-            </resource>
-        </resources>
+        <!--&lt;!&ndash; Include frontend dist directory, in addition to standard resource-->
+            <!--directory &ndash;&gt;-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--<directory>frontend</directory>-->
+                <!--<includes>-->
+                    <!--<include>dist/**</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        <!--</resources>-->
 
         <plugins>
             <!-- Create executable jar with all dependencies -->
@@ -190,74 +190,74 @@
                 <extensions>true</extensions>
             </plugin>
 
-            <!-- Install node, npm, bower, and gulp locally. Trigger gulp build. -->
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>0.0.23</version>
-                <configuration>
-                    <workingDirectory>frontend</workingDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>install node and npm</id>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <nodeVersion>v0.12.4</nodeVersion>
-                            <npmVersion>2.11.2</npmVersion>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--&lt;!&ndash; Install node, npm, bower, and gulp locally. Trigger gulp build. &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>com.github.eirslett</groupId>-->
+                <!--<artifactId>frontend-maven-plugin</artifactId>-->
+                <!--<version>0.0.23</version>-->
+                <!--<configuration>-->
+                    <!--<workingDirectory>frontend</workingDirectory>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>install node and npm</id>-->
+                        <!--<goals>-->
+                            <!--<goal>install-node-and-npm</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>generate-resources</phase>-->
+                        <!--<configuration>-->
+                            <!--<nodeVersion>v0.12.4</nodeVersion>-->
+                            <!--<npmVersion>2.11.2</npmVersion>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>npm install</id>-->
+                        <!--<goals>-->
+                            <!--<goal>npm</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>generate-resources</phase>-->
+                        <!--<configuration>-->
+                            <!--<arguments>install</arguments>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
-            <!-- Build frontend -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <executions>
-                    <execution>
-                        <id>Build frontend</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>${basedir}/frontend/node_modules/.bin/webpack${command.extension}</executable>
-                            <arguments>
-                                <argument>-p</argument>
-                            </arguments>
-                            <workingDirectory>${basedir}/frontend</workingDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--&lt;!&ndash; Build frontend &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>exec-maven-plugin</artifactId>-->
+                <!--<version>1.4.0</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>Build frontend</id>-->
+                        <!--<phase>generate-resources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>exec</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<executable>${basedir}/frontend/node_modules/.bin/webpack${command.extension}</executable>-->
+                            <!--<arguments>-->
+                                <!--<argument>-p</argument>-->
+                            <!--</arguments>-->
+                            <!--<workingDirectory>${basedir}/frontend</workingDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
-            <!-- Clean frontend -->
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.6.1</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>frontend/dist</directory>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
+            <!--&lt;!&ndash; Clean frontend &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<artifactId>maven-clean-plugin</artifactId>-->
+                <!--<version>2.6.1</version>-->
+                <!--<configuration>-->
+                    <!--<filesets>-->
+                        <!--<fileset>-->
+                            <!--<directory>frontend/dist</directory>-->
+                        <!--</fileset>-->
+                    <!--</filesets>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
